@@ -359,29 +359,12 @@ powertimer () {
     powerpid=$!
 
     echo
-    echo "${BOLD}${CYAN}Wiping complete. Powering off in ${YELLOW}$1${CYAN} seconds. ${NC}"
+    echo "${BOLD}${CYAN}Wiping complete. Powering off"
     echo
 
-    while :; do
-	read -n 1 -rep "${BOLD}${MAGENTA}Enter ${YELLOW}(c)${MAGENTA}ancel to continue booting, or ${YELLOW}(q)${MAGENTA}uit to shutdown now.${NC}: " input
-	case "$input" in
-	    c|C)
-		clear
-		kill "$powerpid"
-		exit 0
-		;;
-	    q|Q)
-		clear
-		kill "$powerpid"
-		poweroff -f > /dev/null 2>&1 &
-		;;
-	    *)
-		echo
-		echo "${BOLD}${RED}Invalid character.${NP}"
-		echo
-		;;
-	esac
-    done
+    clear
+    kill "$powerpid"
+    poweroff -f > /dev/null 2>&1 &
 }
 
 main () {
