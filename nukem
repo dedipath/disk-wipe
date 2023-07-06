@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Define colors to be used when echoing output
 readonly NC=$(tput sgr0)
